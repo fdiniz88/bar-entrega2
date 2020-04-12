@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com</groupId>
-	<artifactId>bar</artifactId>
+	<artifactId>AppBarAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bar</name>
 	<description>Projeto de pedidos de bar</description>

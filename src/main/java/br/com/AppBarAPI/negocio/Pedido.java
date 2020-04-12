@@ -1,4 +1,4 @@
-package br.com.bar.negocio;
+package br.com.AppBarAPI.negocio;
 
 import java.util.List;
 
@@ -14,13 +14,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @Entity
 @Table(name = "TPedido")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Pedido {
 
 	@Id
@@ -31,10 +32,9 @@ public class Pedido {
 	
 	@OneToOne(
 			fetch = FetchType.EAGER,
-			cascade = CascadeType.PERSIST
+			cascade = CascadeType.DETACH
 			)
-	@JoinColumn(name = "idCliente")	
-	
+	@JoinColumn(name = "idCliente")		
 	private Cliente cliente;
 	
 	@OneToMany(
@@ -44,20 +44,20 @@ public class Pedido {
 			)		
 
     @JsonManagedReference
-	private List<Produto> produtos;
+	private List<Item> itens;
 	
 	public Pedido(){
 	}
 	
 	public Pedido(Integer id, String descricao) {
 		this();
-		this.id = id;
-		this.descricao = descricao;
+		this.setId(id);
+		this.setDescricao(descricao);
 	}
 	
 	@Override
 	public String toString() {
-		return String.format(this.getCliente() + ", produtos=" + this.getProdutos());
+		return String.format(this.getCliente() + ", produtos=" + this.getItens());
 	}	
 
 	public Integer getId() {
@@ -78,10 +78,10 @@ public class Pedido {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public List<Produto> getProdutos() {
-		return produtos;
+	public List<Item> getItens() {
+		return itens;
 	}
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setItens(List<Item> itens) {
+		this.itens = itens;
 	}
 }

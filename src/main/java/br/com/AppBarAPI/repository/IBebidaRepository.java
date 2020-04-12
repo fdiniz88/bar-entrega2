@@ -1,9 +1,9 @@
-package br.com.bar.repository;
+package br.com.AppBarAPI.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.bar.negocio.Bebida;
+import br.com.AppBarAPI.negocio.Bebida;
 
 
 @Repository

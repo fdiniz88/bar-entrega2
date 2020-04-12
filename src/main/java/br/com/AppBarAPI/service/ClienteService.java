@@ -1,4 +1,4 @@
-package br.com.bar.service;
+package br.com.AppBarAPI.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.bar.negocio.Cliente;
-import br.com.bar.repository.IClienteRepository;
+import br.com.AppBarAPI.negocio.Cliente;
+import br.com.AppBarAPI.repository.IClienteRepository;
 
 @Service
 public class ClienteService {

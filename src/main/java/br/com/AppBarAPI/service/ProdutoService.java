@@ -1,4 +1,4 @@
-package br.com.bar.service;
+package br.com.AppBarAPI.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.bar.negocio.Produto;
-import br.com.bar.repository.IProdutoRepository;
+import br.com.AppBarAPI.negocio.Produto;
+import br.com.AppBarAPI.repository.IProdutoRepository;
 
 @Service
 public class ProdutoService {

@@ -1,4 +1,4 @@
-package br.com.bar.controller;
+package br.com.AppBarAPI.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.bar.negocio.Cliente;
-import br.com.bar.service.ClienteService;
+import br.com.AppBarAPI.negocio.Cliente;
+import br.com.AppBarAPI.service.ClienteService;
 
 @RestController
 @RequestMapping("/api/cliente/")

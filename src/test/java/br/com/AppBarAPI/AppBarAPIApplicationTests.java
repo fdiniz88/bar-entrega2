@@ -1,4 +1,4 @@
-package br.com.bar;
+package br.com.AppBarAPI;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

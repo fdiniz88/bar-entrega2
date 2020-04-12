@@ -1,4 +1,4 @@
-package br.com.bar.negocio;
+package br.com.AppBarAPI.negocio;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,15 +19,7 @@ public class Cliente {
 	
 	public Cliente() {	
 	}
-	
-	public Cliente(Integer id, String nome, Integer idade, String genero) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.idade = idade;
-		this.genero = genero;
-	}
-	
+
 	@Override
 	public String toString() {
 		return "Cliente -> nome=" + this.getNome() + ", idade=" + this.getIdade() + ", g�nero=" + this.getGenero();

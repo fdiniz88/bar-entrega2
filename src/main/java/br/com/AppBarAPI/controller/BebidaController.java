@@ -1,18 +1,19 @@
-package br.com.bar.controller;
+package br.com.AppBarAPI.controller;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.bar.negocio.Bebida;
-import br.com.bar.service.BebidaService;
+import br.com.AppBarAPI.negocio.Bebida;
+import br.com.AppBarAPI.service.BebidaService;
 
 @RestController
 @RequestMapping("/api/bebida/")
@@ -21,7 +22,7 @@ public class BebidaController {
 	@Autowired
 	private BebidaService service;
 	
-	@RequestMapping
+	@GetMapping
 	public List<Bebida> obterLista(){
 		return service.obterLista();
 	}
@@ -32,8 +33,7 @@ public class BebidaController {
 	}
 	
 	@PostMapping
-	public void incluir(@RequestBody Bebida Bebida) 
-	{
+	public void incluir(@RequestBody Bebida Bebida) {
 		service.incluir(Bebida);
 	}
 	

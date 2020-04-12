@@ -1,10 +1,17 @@
-package br.com.bar.negocio;
+package br.com.AppBarAPI.negocio;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 
@@ -12,23 +19,26 @@ import javax.persistence.Table;
 @Table(name = "TSobremesa")
 @PrimaryKeyJoinColumn(name = "idProduto")
 public class Sobremesa extends Produto {
-
 	
 	private Date validade;
 	private String tamanho;
 	private boolean isFeitoHone;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idProduto", nullable = false)
+	@MapsId
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Produto produto;
+	
 	public Sobremesa() {	
+		super();
 	}
 	
-	public Sobremesa(Integer id, String nome, Integer quantidade, float preco, Date validade, String tamanho, boolean isFeitoHone) {
-		super(id, nome, quantidade, preco);
-		this.setNome(nome);
-		this.setQuantidade(quantidade);
-		this.setPreco(preco);		
-		this.validade = validade;
-		this.tamanho = tamanho;
-		this.isFeitoHone = isFeitoHone;
+	public Sobremesa(Date validade, String tamanho, boolean isFeitoHone) {
+		this();
+		this.setValidade(validade);
+		this.setTamanho(tamanho);
+		this.setFeitoHone(isFeitoHone);		
 	}
 	
 	public Date getValidade() {
@@ -54,13 +64,22 @@ public class Sobremesa extends Produto {
 	public void setFeitoHone(boolean isFeitoHone) {
 		this.isFeitoHone = isFeitoHone;
 	}	
+	
+	public int getIdProduto() {
+		return produto.getId();
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
 
 	@Override
 	public String toString() {
-		return "Sobremesa -> nome=" + this.getNome() 
-				+ ", quantidade=" + this.getQuantidade() 
-				+ ", pre�o=" + this.getPreco()
-				+ ", tamanho=" + this.getTamanho() 
+		return "Sobremesa -> tamanho=" + this.getTamanho() 
 				+ ", validade="	+ this.getValidade() 
 				+ ", feito hoje=" + this.isFeitoHone;
 	}
